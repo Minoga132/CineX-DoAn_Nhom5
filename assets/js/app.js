@@ -224,7 +224,7 @@ window.CineX = (function(){
     });
   }
 
-  // Map tên thể loại tiếng Việt -> tiếng Anh (khớp với demoMovies)
+  // Map tên thể loại tiếng Việt -> tiếng Anh
 const GENRE_MAP = {
   "Hành động": "Action",
   "Tình cảm": "Romance",
@@ -263,9 +263,6 @@ function applyFilters(){
 }
 
 function initIndex(){
-  // Search: dùng input
-  q("#searchInput")?.addEventListener("input", applyFilters);
-
   // Selects: dùng change để chắc chắn trên Safari
   q("#genreFilter") ?.addEventListener("change", applyFilters);
   q("#ratingFilter")?.addEventListener("change", applyFilters);
@@ -316,7 +313,7 @@ function initIndex(){
     buildSeatMap();
     updateTotals();
     q("#btnCheckout")?.addEventListener("click", ()=>{
-      alert("Demo: chuyển qua bước thanh toán (tự tích hợp backend sau).");
+      alert("Demo: chuyển qua bước thanh toán");
     });
   }
 
@@ -363,7 +360,7 @@ function initIndex(){
   }
 
   function updateTotals(){
-    const price = 90000;
+    const price = 45000;
     const selected = qa(".seat.selected").map(x=>x.dataset.seat);
     if (q("#selectedSeats")) q("#selectedSeats").textContent = selected.join(", ") || "—";
     if (q("#totalPrice")) q("#totalPrice").textContent = (selected.length*price).toLocaleString("vi-VN") + "đ";
